@@ -1,5 +1,9 @@
 __pycache__/
 
+# When I don't want to print to the terminal :)
 *.log
 
+# API stuff, don't look
 config.py
+credentials.json
+token.pickle
