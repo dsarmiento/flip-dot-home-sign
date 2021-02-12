@@ -61,7 +61,8 @@ def main():
     now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
     later = datetime.datetime.utcnow() + datetime.timedelta(days=14)
     for cal in calendars:
-      print('Getting the upcoming events for ' + cal)
+      calName = service.calendars().get(calendarId=cal).execute().get('summary')
+      print('Getting the upcoming events for ' + str(calName))
       events_result = service.events().list(calendarId=cal, timeMin=now, timeMax=later.isoformat()+'Z',
                                           maxResults=10, singleEvents=True,
                                           orderBy='startTime').execute()
